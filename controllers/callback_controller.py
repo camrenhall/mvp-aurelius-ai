@@ -5,10 +5,16 @@ from fastapi import APIRouter, Depends, HTTPException, Path
 from pydantic import BaseModel
 from sqlmodel import Session
 
-from app import get_session
 from services.document_service import DocumentService
 
 router = APIRouter()
+
+
+# Import get_session locally to avoid circular import
+def get_session():
+    from app import get_session as _get_session
+
+    return _get_session()
 
 
 class CallbackResponse(BaseModel):

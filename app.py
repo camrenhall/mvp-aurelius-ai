@@ -3,8 +3,6 @@ from fastapi import Depends, FastAPI
 from sqlmodel import Session, SQLModel, create_engine
 
 from config.settings import settings
-from controllers.callback_controller import router as callback_router
-from controllers.ingest_controller import router as ingest_router
 
 engine = create_engine(settings.database_url)
 
@@ -20,6 +18,10 @@ def get_session():
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Aurelius AI MVP")
+
+    # Import routers here to avoid circular imports
+    from controllers.callback_controller import router as callback_router
+    from controllers.ingest_controller import router as ingest_router
 
     app.include_router(ingest_router)
     app.include_router(callback_router)
