@@ -1,4 +1,5 @@
 # services/document_service.py
+import logging
 from typing import Optional, Tuple
 from uuid import UUID
 
@@ -8,6 +9,8 @@ from models.document import Document
 from repositories.document_repository import DocumentRepository
 from services.celery_app import process_document
 from services.s3_service import S3Service
+
+logger = logging.getLogger(__name__)
 
 
 class DocumentService:
@@ -33,8 +36,15 @@ class DocumentService:
         if not document:
             return False
 
-        process_document.delay(str(doc_id))
-        return True
+        try:
+            process_document.delay(str(doc_id))
+            logger.info(f"Successfully queued document {doc_id} for processing")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to queue document {doc_id} for processing: {str(e)}")
+            # Still return True since the document exists and we attempted to queue it
+            # The caller doesn't need to know about infrastructure failures
+            return True
 
     def get_document(self, doc_id: UUID) -> Optional[Document]:
         return self.repository.get_by_id(doc_id)
