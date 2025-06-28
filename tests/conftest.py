@@ -1,10 +1,12 @@
+# tests/conftest.py
 import pytest
 from fastapi.testclient import TestClient
 from sqlmodel import Session, SQLModel, create_engine
 from sqlmodel.pool import StaticPool
 
-from app import create_app, get_session
+from app import create_app
 from config.settings import Settings
+from dependencies import get_session
 
 
 @pytest.fixture(name="session")

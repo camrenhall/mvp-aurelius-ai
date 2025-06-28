@@ -1,19 +1,12 @@
 # app.py
-from fastapi import Depends, FastAPI
-from sqlmodel import Session, SQLModel, create_engine
+from fastapi import FastAPI
+from sqlmodel import SQLModel
 
-from config.settings import settings
-
-engine = create_engine(settings.database_url)
+from dependencies import engine
 
 
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
-
-
-def get_session():
-    with Session(engine) as session:
-        yield session
 
 
 def create_app() -> FastAPI:
