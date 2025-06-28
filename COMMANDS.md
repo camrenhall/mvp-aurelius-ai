@@ -8,6 +8,11 @@ pip install -r requirements.txt
 pip install -r requirements-test.txt
 ```
 
+## Linting
+```bash
+pre-commit run --all-files
+```
+
 ## Running Services
 ```bash
 # API Server
