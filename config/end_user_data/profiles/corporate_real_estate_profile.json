@@ -1,0 +1,9 @@
+{
+  "industry": "CORPORATE_REAL_ESTATE",
+  "ingest": "upload",
+  "schema": "corporate_real_estate_schema_v1.json",
+  "ui": ["bulk_upload", "qa_dashboard", "zip_export"],
+  "export": "excel_template",
+  "notification": "none",
+  "confidence_threshold": 0.90
+}

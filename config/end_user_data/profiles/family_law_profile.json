@@ -1,0 +1,9 @@
+{
+  "industry": "FAMILY_LAW",
+  "ingest": "upload",
+  "schema": "family_law_schema_v1.json",
+  "ui": ["doc_selector_ai", "request_tracker", "client_status"],
+  "export": "pdf_merge",
+  "notification": "email",
+  "confidence_threshold": 0.80
+}

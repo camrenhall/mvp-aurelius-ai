@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Family Law Discovery Schema v1",
+  "type": "object",
+  "properties": {
+    "case_number":               { "type": "string",  "required": true },
+    "party_full_name":           { "type": "string",  "required": true },
+    "spouse_full_name":          { "type": "string",  "required": true },
+    "tax_return_years_provided": { "type": "array",   "items": { "type": "integer" }, "required": true },
+    "w2_income_gross":           { "type": "number",  "minimum": 0, "required": false },
+    "bank_statements_months":    { "type": "integer", "minimum": 0, "maximum": 36, "required": false },
+    "real_property_addresses":   { "type": "array",   "items": { "type": "string" }, "required": false },
+    "retirement_balance_total":  { "type": "number",  "minimum": 0, "required": false },
+    "child_names":               { "type": "array",   "items": { "type": "string" }, "required": false },
+    "child_support_paid_monthly":{ "type": "number",  "minimum": 0, "required": false },
+    "health_insurance_cost":     { "type": "number",  "minimum": 0, "required": false }
+  },
+  "required": [
+    "case_number",
+    "party_full_name",
+    "spouse_full_name",
+    "tax_return_years_provided"
+  ]
+}

@@ -118,5 +118,3 @@ Client Upload  →  Ingest API  ─┐
 * **Analytics:** Store embeddings in PGVector for semantic search across matter corpus.
 
 ---
-
-**Reference Usage:** Drop this document into any LLM chat or internal repo when discussing scope, architecture, or trade-offs for the MVP.

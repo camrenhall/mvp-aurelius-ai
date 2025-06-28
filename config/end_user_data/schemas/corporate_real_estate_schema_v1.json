@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Corporate Real Estate Lease Abstraction v1",
+  "type": "object",
+  "properties": {
+    "tenant_name":               { "type": "string",  "required": true },
+    "landlord_name":             { "type": "string",  "required": true },
+    "property_address":          { "type": "string",  "required": true },
+    "lease_start_date":          { "type": "string",  "format": "date", "required": true },
+    "lease_end_date":            { "type": "string",  "format": "date", "required": true },
+    "base_rent_amount":          { "type": "number",  "minimum": 0,     "required": true },
+    "rent_frequency":            { "type": "string",  "enum": ["Monthly","Quarterly","Annual"], "required": true },
+    "escalation_clause":         { "type": "string",  "required": false },
+    "cam_rate_percent":          { "type": "number",  "minimum": 0, "maximum": 100, "required": false },
+    "security_deposit_amount":   { "type": "number",  "minimum": 0, "required": false },
+    "renewal_options_summary":   { "type": "string",  "required": false },
+    "termination_rights":        { "type": "string",  "required": false }
+  },
+  "required": [
+    "tenant_name",
+    "landlord_name",
+    "property_address",
+    "lease_start_date",
+    "lease_end_date",
+    "base_rent_amount",
+    "rent_frequency"
+  ]
+}
