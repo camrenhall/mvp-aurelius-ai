@@ -51,6 +51,7 @@ jobs:
         AWS_ACCESS_KEY_ID: test-key
         AWS_SECRET_ACCESS_KEY: test-secret
         AWS_REGION: us-east-1
+        PYTHONPATH: .
       run: |
         pytest tests/ -v --tb=short
         

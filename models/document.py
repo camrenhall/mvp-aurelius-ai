@@ -1,8 +1,10 @@
 # models/document.py
-from sqlmodel import SQLModel, Field
-from typing import Optional
 from datetime import datetime
+from typing import Optional
 from uuid import UUID, uuid4
+
+from sqlmodel import Field, SQLModel
+
 
 class Document(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)

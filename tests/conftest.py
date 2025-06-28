@@ -2,6 +2,7 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlmodel import Session, SQLModel, create_engine
 from sqlmodel.pool import StaticPool
+
 from app import create_app, get_session
 from config.settings import Settings
 
@@ -39,7 +40,7 @@ def mock_settings(monkeypatch):
         broker_url="redis://localhost:6379/0",
         aws_access_key_id="test-key",
         aws_secret_access_key="test-secret",
-        aws_region="us-east-1"
+        aws_region="us-east-1",
     )
     monkeypatch.setattr("config.settings.settings", test_settings)
     return test_settings
